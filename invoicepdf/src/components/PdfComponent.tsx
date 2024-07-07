@@ -5,11 +5,18 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
 export default function PdfComponent() {
+const userData = {
+    invoiceNumber: 2024001,
+}
+
+
+
+
     const generatePDF = () => {
         const docDefinition = {
             content: [
                 {
-                    text: 'Your new invoice !',
+                    text: `Faktúra číslo: ${userData.invoiceNumber}`,
                     style: 'header'
                 },
                 'Example'
@@ -25,16 +32,12 @@ export default function PdfComponent() {
         // pdfMake.createPdf(docDefinition).download('Invoice number: 2024001'); 
         // pdfMake.createPdf(docDefinition).print();
         pdfMake.createPdf(docDefinition).open();
-
-
-
     }
 
 
   return (
-    <div>PdfComponent
-              <button onClick={generatePDF}>Generate PDF</button>
-
+    <div>
+        <button onClick={generatePDF}>Generate PDF</button>
     </div>
   )
 }
