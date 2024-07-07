@@ -1,4 +1,5 @@
 /* eslint-disable no-octal */
+import { margin, style } from "@mui/system";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -85,10 +86,25 @@ const customer: Customer = {
                             DIČ: ${customer.DIC}`
                         }, 
                     ]
+                },
+                {
+                    layout: 'lightHorizontalLines',
+                    style: 'h2',
+                    table: {
+                      headerRows: 1,
+                      widths: [ '*', 'auto', 100, '*', '*' ],
+                        
+                      body: [
+                        [ 'Názov položky', 'Počet', 'Jednotka', 'Jednotková cena', 'Celkom' ],
+                        [ 'Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5' ],
+                        [ { text: 'Bold value', bold: true }, 'Val 2', 'Val 3', 'Val 4', 'Val 5' ]
+                      ]
+                    }
                 }
-           
-
             ],
+            defaultStyle: {
+                fontSize: 10
+            },
             styles: {
                 h1: {
                     alignment: 'center',
@@ -99,7 +115,11 @@ const customer: Customer = {
                 h2: {
                     bold: true,
                     margin: [0, 0, 0, 10]
-                }
+                },
+                table: {
+                    bold: true,
+                    margin: [20, 20, 20, 20]
+                },
             }
         }
 

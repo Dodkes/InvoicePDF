@@ -1,0 +1,51 @@
+name: Build & Deploy static page
+
+on:
+    workflow_dispatch: # enable manual triggering
+    push:
+        branches:
+            - master
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: '22'
+                
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build static page
+              run: npm run build
+
+            - name: Upload pages artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  name: github-pages
+                  path: build
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+
+        permissions:
+            pages: write
+            id-token: write
+
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+
+        steps:
+            - name: Deploy pages
+              uses: actions/deploy-pages@v4
+              id: deployment
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
