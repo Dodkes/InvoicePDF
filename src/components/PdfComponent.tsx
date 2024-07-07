@@ -14,7 +14,8 @@ interface Customer {
 
 interface Provider extends Customer {
     invoiceNumber: number,
-    registered: string
+    registered: string,
+    IBAN: string
 }
 
 const provider: Provider = {
@@ -26,7 +27,8 @@ const provider: Provider = {
     country: 'Slovensko',
     ICO: 55902227,
     DIC: 1120397267,
-    registered: 'Okresný úrad Michalovce, Číslo živnostenského registra: 840-31636'
+    registered: 'Okresný úrad Michalovce, Číslo živnostenského registra: 840-31636',
+    IBAN: 'SK72 2222 0000 0029 6259 7873'
 }
 
 const customer: Customer = {
@@ -47,7 +49,9 @@ const invoice = {
 
 const items = [
     [ 'Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5' ],
-    [ 'Hodnota 1', 'Hodnota 2', 'Hodnota 3', 'Hodnota 4', 'Hodnota 5' ],
+    [ 'Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5' ],
+    [ 'Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5' ],
+    [ 'Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5' ],
 ]
 
 export default function PdfComponent() {
@@ -107,7 +111,6 @@ export default function PdfComponent() {
                     table: {
                       headerRows: 1,
                       widths: [ '*', 'auto', 100, '*', '*' ],
-                        
                       body: [
                         [ 'Názov položky', 'Počet', 'Jednotka', 'Jednotková cena', 'Celkom' ],
                         ...items
@@ -117,6 +120,18 @@ export default function PdfComponent() {
                 {
                     text: `Celková suma: ${500+200} €`,
                     style: 'price'
+                },
+                {
+                    style: 'move',
+                    table: {
+                        headerRows: 1,
+                        widths: ['auto', 'auto', 'auto', 'auto'],
+
+                        body: [
+                            ['IBAN', 'Variabilný symbol', 'Dátum splatnosti', 'Suma na úhradu'],
+                            [provider.IBAN, provider.invoiceNumber, invoice.dueDate, '700 €']
+                        ]
+                    }
                 }
             ],
             defaultStyle: {
@@ -137,12 +152,12 @@ export default function PdfComponent() {
                     bold: true,
                 },
                 move:  {
-                    margin: [0, 15, 0, 0]
+                    margin: [0, 50, 0, 0]
                 },
                 price: {
                     bold: true,
                     alignment: 'right',
-                    fontSize: 15,
+                    fontSize: 12,
                     margin: [0, 30, 0, 0]
                 }
             }
