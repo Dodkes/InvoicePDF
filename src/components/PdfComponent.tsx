@@ -1,9 +1,6 @@
-/* eslint-disable no-octal */
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-export default function PdfComponent() {
 
 interface Customer {
     name: string,
@@ -14,6 +11,7 @@ interface Customer {
     ICO: number,
     DIC: number
 }
+
 interface Provider extends Customer {
     invoiceNumber: number,
     registered: string
@@ -41,13 +39,23 @@ const customer: Customer = {
     DIC: 4564367832
 }
 
+const invoice = {
+    issueDate: new Date().toLocaleDateString(),
+    deliveryDate: new Date().toLocaleDateString(),
+    dueDate: new Date().toLocaleDateString()
+}
 
+const items = [
+    [ 'Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5' ],
+    [ 'Hodnota 1', 'Hodnota 2', 'Hodnota 3', 'Hodnota 4', 'Hodnota 5' ],
+]
 
+export default function PdfComponent() {
     const generatePDF = () => {
         const docDefinition = {
             content: [
                 {
-                    text: `Faktúra číslo: ${provider.invoiceNumber}`,
+                    text: `Faktúra ${provider.invoiceNumber}`,
                     style: 'h1'
                 },
                 {
@@ -87,18 +95,28 @@ const customer: Customer = {
                     ]
                 },
                 {
+                    text: `Dátum vystavenia: ${invoice.issueDate}
+                    Dátum dodania: ${invoice.deliveryDate}
+                    Dátum splatnosti ${invoice.dueDate}
+                    `,
+                    style: 'move'
+                },
+                {
                     layout: 'lightHorizontalLines',
-                    style: 'h2',
+                    style: 'table',
                     table: {
                       headerRows: 1,
                       widths: [ '*', 'auto', 100, '*', '*' ],
                         
                       body: [
                         [ 'Názov položky', 'Počet', 'Jednotka', 'Jednotková cena', 'Celkom' ],
-                        [ 'Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5' ],
-                        [ { text: 'Bold value', bold: true }, 'Val 2', 'Val 3', 'Val 4', 'Val 5' ]
+                        ...items
                       ]
                     }
+                },
+                {
+                    text: `Celková suma: ${500+200} €`,
+                    style: 'price'
                 }
             ],
             defaultStyle: {
@@ -117,21 +135,23 @@ const customer: Customer = {
                 },
                 table: {
                     bold: true,
-                    margin: [20, 20, 20, 20]
                 },
+                move:  {
+                    margin: [0, 15, 0, 0]
+                },
+                price: {
+                    bold: true,
+                    alignment: 'right',
+                    fontSize: 15,
+                    margin: [0, 30, 0, 0]
+                }
             }
         }
-
-
-
-
-
 
         // pdfMake.createPdf(docDefinition).download('Invoice number: 2024001'); 
         // pdfMake.createPdf(docDefinition).print();
         pdfMake.createPdf(docDefinition).open();
     }
-
 
   return (
     <div>
