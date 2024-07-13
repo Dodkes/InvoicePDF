@@ -1,5 +1,6 @@
 import { Formik, Field, ErrorMessage, Form } from 'formik'
 import * as Yup from 'yup'
+import { useEffect, useState } from 'react';
 
 interface FormValues {
   email: string
@@ -7,8 +8,19 @@ interface FormValues {
 }
 
 export default function InvoiceForm() {
-  const initialValues: FormValues = { email: '', password: '' }
+  // const [data, setData] = useState([]);
 
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/users') // Replace with your server's URL
+  //     .then(response => response.json())
+  //     .then(data => setData(data))
+  //     .catch(error => console.error('Error:', error));
+  // }, []);
+  
+  
+  
+  const initialValues: FormValues = { email: '', password: '' }
+  
   return (
     <div>
         <h1>Fakturačné údaje</h1>

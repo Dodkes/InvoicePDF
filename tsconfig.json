@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "typeRoots": ["./types", "./node_modules/@types"],
+    "outDir": "./dist",
+
     "target": "es5",
     "lib": [
       "dom",
@@ -22,6 +24,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src/**/*"
   ]
 }
