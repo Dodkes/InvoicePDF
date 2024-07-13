@@ -33,9 +33,18 @@ const app = express()
 const port = 8080
 
 const users = [
-  {"user1" : "Misko"},
-  {"user2" : "Janko"}
+  {
+    email: "roth.malder@email.com",
+    password: "roth.malder@email.comroth.malder@email.com",
+    name: "Roth Malder"
+  },
+  {
+    email: "john.doe@email.sk",
+    password: "john.doe@email.skjohn.doe@email.sk",
+    name: "John Doe"
+  }
 ]
+
 
 app.get('/api', (req, res) => {
   res.json(users)
