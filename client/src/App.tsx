@@ -1,12 +1,36 @@
 import './App.css';
-import PdfComponent from './components/PdfComponent';
-import InvoiceForm from './components/InvoiceForm';
+import LoginForm from './components/LoginForm';
+import Account from './components/Account';
+import { useState, useEffect } from 'react';
+
+export interface FormValues {
+  email: string
+  password: string
+}
+
+export interface BackendData extends FormValues {
+  name: string
+}
+
 
 function App() {
+const [login, setLogin] = useState(false)
+const [backendData, setBackendData] = useState<BackendData[]>([])
+
+async function getAPI() {
+    const response = await fetch('/api')
+    const jsonData = await response.json()
+
+    setBackendData(jsonData)
+}
+
+useEffect(() => {
+  getAPI()
+}, [])
+
   return (
     <div className="App">
-      <InvoiceForm />
-      <PdfComponent />
+      {!login ? <LoginForm setLogin={setLogin} backendData={backendData} /> : <Account/>}
     </div>
   )
 }

@@ -1,0 +1,10 @@
+import PdfComponent from "./PdfComponent"
+
+export default function Account() {
+  return (
+    <div>
+        <h1>Account</h1>
+        <PdfComponent />
+    </div>
+  )
+}

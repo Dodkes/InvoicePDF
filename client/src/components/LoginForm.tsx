@@ -1,45 +1,21 @@
 import { Formik, Field, ErrorMessage, Form } from 'formik'
-import { useEffect, useState } from 'react'
 import * as Yup from 'yup'
+import { FormValues } from '../App'
 
-interface FormValues {
-  email: string
-  password: string
-}
-
-interface BackendData extends FormValues {
-  name: string
-}
-
-export default function InvoiceForm() {
-  const [backendData, setBackendData] = useState<BackendData[]>([])
-
-async function getAPI() {
-    const response = await fetch('/api')
-    const jsonData = await response.json()
-
-    setBackendData(jsonData)
-}
-
-useEffect(() => {
-  getAPI()
-}, [])
-
+export default function LoginForm(props: any) {
 
 function login (values: FormValues) {
-
-  const findInDB = backendData.filter((user) => user.email === values.email)
-  console.log(findInDB)
+  const findInDB = props.backendData.filter((user: FormValues) => user.email === values.email)
+  if (findInDB.length !== 0) {
+    props.setLogin(true)
+  }
 }
 
   const initialValues: FormValues = { email: 'john.doe@email.sk', password: 'john.doe@email.skjohn.doe@email.sk' }
   
   return (
     <div>
-        <h1>Fakturačné údaje</h1>
-
-        {/* {(typeof backendData[0] === 'undefined')? <p>loading</p> : <p>{JSON.stringify(backendData)}</p>} */}
-
+        <h1>Prihlásenie</h1>
         <Formik
         initialValues={initialValues}
         validationSchema={Yup.object({
