@@ -1,42 +1,21 @@
-// import { createServer } from "node:http"
-// import { JSONFilePreset } from 'lowdb/node'
-
-// // Read or create db.json
-// const defaultData = { posts: [] }
-// const db = await JSONFilePreset('db.json', defaultData)
-
-// // Update db.json
-// await db.update((data) => {
-//     // data.posts.push('hello ' + Math.random())
-//     data.posts.push(new Date())
-// });
-
-
-// // db.data.posts.push('hello ' + Math.random());
-
-// await db.read();
-// console.log(db.data);
-
-// await db.write();
-
-// const server = createServer((req, res) => {
-//     res.writeHead(200, { 'Content-Type': 'application/json' });
-//     res.end(JSON.stringify(db.data));
-// });
-
-// server.listen(8080);
-
-
-
 import express from 'express'
+
 const app = express()
 const port = 8080
 
 const users = [
   {
-    email: "roth.malder@email.com",
-    password: "roth.malder@email.comroth.malder@email.com",
-    name: "Roth Malder"
+    email: 'roth.malder@email.com',
+    password: 'roth.malder@email.comroth.malder@email.com',
+    name: 'Roth Malder',
+    street: 'Jána Hollého 1056/5',
+    city: 'Michalovce',
+    ZIP: 71001,
+    country: 'Slovensko',
+    ICO: 55902227,
+    DIC: 1120397267,
+    registered: 'Okresný úrad Michalovce, Číslo živnostenského registra: 840-31636',
+    IBAN: 'SK72 2222 0000 0029 6259 7873'
   },
   {
     email: "john.doe@email.sk",
