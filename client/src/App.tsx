@@ -12,10 +12,11 @@ export interface BackendData extends FormValues {
   name: string
 }
 
-
 function App() {
-const [login, setLogin] = useState(false)
+const [isLoggedIn, setIsLoggedIn] = useState(false)
+const [authenticationFailed, setAutenthicationFailed] = useState<boolean>(false)
 const [backendData, setBackendData] = useState<BackendData[]>([])
+const [activeUser, setActiveUser] = useState<object>({})
 
 async function getAPI() {
     const response = await fetch('/api')
@@ -28,9 +29,21 @@ useEffect(() => {
   getAPI()
 }, [])
 
+function login (values: FormValues) {
+  const findInDB = backendData.filter((user: FormValues) => user.email === values.email && user.password === values.password)
+  if (findInDB.length !== 0) {
+    setIsLoggedIn(true)
+    setActiveUser(findInDB)
+    setAutenthicationFailed(false)
+  } else {
+    setAutenthicationFailed(true)
+  }
+}
+
   return (
     <div className="App">
-      {!login ? <LoginForm setLogin={setLogin} backendData={backendData} /> : <Account/>}
+      {!isLoggedIn ? <LoginForm login={login} setIsLoggedIn={setIsLoggedIn} backendData={backendData} /> : <Account foundUser={activeUser} />}
+      {authenticationFailed ? <p>Authentication failed !</p> : null}
     </div>
   )
 }

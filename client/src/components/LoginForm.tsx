@@ -2,16 +2,14 @@ import { Formik, Field, ErrorMessage, Form } from 'formik'
 import * as Yup from 'yup'
 import { FormValues } from '../App'
 
-export default function LoginForm(props: any) {
+export default function LoginForm(props: {login: (arg: FormValues) => void, setIsLoggedIn: (arg: boolean) => void, backendData: object}) {
 
-function login (values: FormValues) {
-  const findInDB = props.backendData.filter((user: FormValues) => user.email === values.email)
-  if (findInDB.length !== 0) {
-    props.setLogin(true)
-  }
-}
 
-  const initialValues: FormValues = { email: 'john.doe@email.sk', password: 'john.doe@email.skjohn.doe@email.sk' }
+
+  // const initialValues: FormValues = { email: 'john.doe@email.sk', password: 'john.doe@email.skjohn.doe@email.sk' }
+  // const initialValues: FormValues = { email: 'roth.malder@email.com', password: 'roth.malder@email.comroth.malder@email.com' }
+  const initialValues: FormValues = { email: 'jane.doe@email.eu', password: 'jane.doe@email.eujane.doe@email.eu' }
+
   
   return (
     <div>
@@ -27,7 +25,7 @@ function login (values: FormValues) {
             .required('Povinné')
         })}
         onSubmit={(values, { setSubmitting }) => {
-            login(values)
+            props.login(values)
             setSubmitting(false)
         }}
         >

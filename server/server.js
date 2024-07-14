@@ -42,6 +42,11 @@ const users = [
     email: "john.doe@email.sk",
     password: "john.doe@email.skjohn.doe@email.sk",
     name: "John Doe"
+  },
+  {
+    email: "jane.doe@email.eu",
+    password: "jane.doe@email.eujane.doe@email.eu",
+    name: "Jane Doe"
   }
 ]
 
