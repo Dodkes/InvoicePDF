@@ -28,7 +28,7 @@ const provider: Provider = {
     ICO: 55902227,
     DIC: 1120397267,
     registered: 'Okresný úrad Michalovce, Číslo živnostenského registra: 840-31636',
-    IBAN: 'SK72 2222 0000 0029 6259 7873'
+    IBAN: 'SK72 2222 0000 0029 6259 7873',
 }
 
 const customer: Customer = {

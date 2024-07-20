@@ -7,6 +7,7 @@ const users = [
   {
     email: 'roth.malder@email.com',
     password: 'roth.malder@email.comroth.malder@email.com',
+    organisation: 'Company ltd.',
     name: 'Roth Malder',
     street: 'Jána Hollého 1056/5',
     city: 'Michalovce',
@@ -15,7 +16,7 @@ const users = [
     ICO: 55902227,
     DIC: 1120397267,
     registered: 'Okresný úrad Michalovce, Číslo živnostenského registra: 840-31636',
-    IBAN: 'SK72 2222 0000 0029 6259 7873'
+    IBAN: 'SK72 2222 0000 0029 6259 7873',
   },
   {
     email: "john.doe@email.sk",
