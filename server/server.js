@@ -1,5 +1,11 @@
 import express from 'express'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const app = express()
 const port = 8080
 app.use(express.json())
@@ -33,9 +39,18 @@ const users = [
 
 app.get('/api', (req, res) => {
   res.json(users)
+
+  // fs.readFile(path.join(__dirname, 'db.json'), 'utf8', (err, data) => {
+  //   res.json(data)
+  // })
 })
 
 app.post('/api', (req, res) => {
+
+  fs.writeFile(path.join(__dirname, 'db.json'), JSON.stringify(req.body), () => {
+      res.send('File written successfully')
+
+  })
   console.log(req.body);
   res.send('POST received');
 });
