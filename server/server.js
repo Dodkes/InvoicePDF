@@ -2,6 +2,7 @@ import express from 'express'
 
 const app = express()
 const port = 8080
+app.use(express.json())
 
 const users = [
   {
@@ -30,25 +31,14 @@ const users = [
   }
 ]
 
-
 app.get('/api', (req, res) => {
   res.json(users)
 })
 
-
-app.get('/', (req, res) => {
-  res.send(users)
-  console.log(users)
-})
-
-app.get('/users', (req, res) => {
-    res.json(users)
-    console.log('Users')
-})
-
-app.post('/', (req, res) => {
-    res.send('Got a POST request')
-})
+app.post('/api', (req, res) => {
+  console.log(req.body);
+  res.send('POST received');
+});
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`)

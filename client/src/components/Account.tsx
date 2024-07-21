@@ -2,18 +2,26 @@ import PdfComponent from "./PdfComponent"
 import { Formik, Field, Form } from 'formik'
 
 export default function Account(props: {signedUser: any, setIsLoggedIn: (arg: boolean) => void}) {
+
+function postData (values: any) {
+  fetch('/api', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(values)
+  })
+}
+
   return (
     <div>
         <h3>Account: {props.signedUser.name}</h3>
         <button onClick={() => props.setIsLoggedIn(false)}>Log out</button>
 
         <Formik
-        // initialValues={{email: 'dodo.zitt@gmail.com', name: 'Misko'}}
         initialValues={props.signedUser}
 
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values)
           setSubmitting(false)
+          postData(values)
         }}
         >
             {({ isSubmitting }) => (
@@ -52,18 +60,11 @@ export default function Account(props: {signedUser: any, setIsLoggedIn: (arg: bo
               <label htmlFor="registered">Registrovaný: </label>
               <Field type='text' name='registered'/>
 
-              <button type="submit">Submit</button>
+              <button type="submit" disabled={isSubmitting}>Submit</button>
               </Form>
-
-
-          //     <label htmlFor="">Faktúru vystavuje: </label>
-          //     <Field type='text' name='name' />
-          //     <button type="submit" disabled={isSubmitting}>Uložiť</button>
-          // </Form>
        )}
 
         </Formik>
-
         <PdfComponent />
     </div>
   )
