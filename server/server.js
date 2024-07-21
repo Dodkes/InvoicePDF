@@ -7,7 +7,7 @@ const users = [
   {
     email: 'roth.malder@email.com',
     password: 'roth.malder@email.comroth.malder@email.com',
-    organisation: 'Company ltd.',
+    organisation: 'Company Ltd.',
     name: 'Roth Malder',
     street: 'Jána Hollého 1056/5',
     city: 'Michalovce',
