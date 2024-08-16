@@ -4,8 +4,6 @@ import { FormValues } from '../App'
 
 export default function LoginForm(props: {login: (arg: FormValues) => void, setIsLoggedIn: (arg: boolean) => void, backendData: object}) {
 
-
-
   // const initialValues: FormValues = { email: 'john.doe@email.sk', password: 'john.doe@email.skjohn.doe@email.sk' }
   const initialValues: FormValues = { email: 'roth.malder@email.com', password: 'roth.malder@email.comroth.malder@email.com' }
   // const initialValues: FormValues = { email: 'jane.doe@email.eu', password: 'jane.doe@email.eujane.doe@email.eu' }
