@@ -1,1 +1,14 @@
-{"email":"roth.malder@email.com","password":"roth.malder@email.comroth.malder@email.com","organisation":"Company Ltd.","name":"Roth Malder","street":"Jána Hollého 1056/5","city":"Michalovce","ZIP":71001,"country":"Slovensko","ICO":55902227,"DIC":1120397267,"registered":"Okresný úrad Michalovce, Číslo živnostenského registra: 840-31636","IBAN":"SK72 2222 0000 0029 6259 7873"}
+{
+    "email": "roth.malder@email.com",
+    "password": "roth.malder@email.comroth.malder@email.com",
+    "organisation": "Company Ltd.",
+    "name": "Roth Malder",
+    "street": "Jána Hollého 1056/5",
+    "city": "Michalovce",
+    "ZIP": 710013,
+    "country": "Slovensko",
+    "ICO": 55902227,
+    "DIC": 1120397267,
+    "registered": "Okresný úrad Michalovce, Číslo živnostenského registra: 840-31636",
+    "IBAN": "SK72 2222 0000 0029 6259 7873"
+}
