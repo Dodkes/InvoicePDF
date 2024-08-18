@@ -16,6 +16,15 @@ body {
   margin: 2px;
 }
 
-label::after {
-  content: "\A";
+.formik-login-container {
+  position: relative;  
+  margin-top: 5%;
+}
+
+.login-email, .login-password {
+  text-align: left;
+  width: fit-content;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
