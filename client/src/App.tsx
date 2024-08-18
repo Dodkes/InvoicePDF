@@ -1,6 +1,6 @@
 import './App.css';
 import LoginForm from './components/LoginForm';
-import Account from './components/Account';
+import AccountDashboard from './components/AccountDashboard';
 import { useState, useEffect } from 'react';
 
 export interface FormValues {
@@ -46,7 +46,7 @@ function login (values: FormValues) {
       ? 
         <LoginForm login={login} setIsLoggedIn={setIsLoggedIn} backendData={backendData} /> 
       : 
-        <Account setIsLoggedIn={setIsLoggedIn} signedUser={activeUser} />}
+        <AccountDashboard setIsLoggedIn={setIsLoggedIn} signedUser={activeUser} />}
       {authenticationFailed ? <p>Authentication failed !</p> : null}
     </div>
   )

@@ -5,3 +5,17 @@ body {
 .App {
   text-align: center;
 }
+
+.account-data-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.account-data-container > div {
+  text-align: left;
+  margin: 2px;
+}
+
+label::after {
+  content: "\A";
+}
