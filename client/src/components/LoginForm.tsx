@@ -1,11 +1,11 @@
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
-import { FormValues } from "../App";
+import { FormValues } from "../types";
 
 export default function LoginForm(props: {
   setIsLoggedIn: (arg: boolean) => void;
   setAutenthicationFailed: (arg: boolean) => void;
-  setActiveUser: (arg: any) => void;
+  setActiveUser: (arg: object) => void;
 }) {
   // const initialValues: FormValues = { email: 'john.doe@email.sk', password: 'john.doe@email.skjohn.doe@email.sk' }
   const initialValues: FormValues = {

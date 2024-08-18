@@ -1,12 +1,13 @@
+import { Provider } from "../types";
 import PdfComponent from "./PdfComponent";
 import { Formik, Field, Form } from "formik";
 
 export default function AccountDashboard(props: {
-  signedUser: any;
+  signedUser: Provider;
   setIsLoggedIn: (arg: boolean) => void;
 }) {
-  function postData(values: any) {
-    fetch("/api", {
+  function postData(values: Provider) {
+    fetch("/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
