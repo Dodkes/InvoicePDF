@@ -13,18 +13,21 @@ app.use(express.json())
 app.get('/api', (req, res) => {
   fs.readFile(path.join(__dirname, 'db.json'), 'utf8', (err, data) => {
     res.json(data)
-    console.log(data)
   })
 })
 
 app.post('/api', (req, res) => {
-
-  fs.writeFile(path.join(__dirname, 'db.json'), JSON.stringify(req.body), () => {
-      res.send('File written successfully')
-
+  fs.readFile(path.join(__dirname, 'db.json'), 'utf8', (err, data) => {
+    const parsedData = JSON.parse(data)
+    const verifyUser = parsedData.filter((user) => user.email === req.body.email && user.password === req.body.password)
+    res.send(verifyUser)
   })
-  console.log(req.body);
-  res.send('POST received');
+
+  // fs.writeFile(path.join(__dirname, 'db.json'), JSON.stringify(req.body), () => {
+  //     res.send('File written successfully')
+  // })
+  // console.log(req.body);
+  // res.send('POST received');
 });
 
 app.listen(port, () => {

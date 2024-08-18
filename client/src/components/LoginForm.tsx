@@ -3,9 +3,9 @@ import * as Yup from "yup";
 import { FormValues } from "../App";
 
 export default function LoginForm(props: {
-  login: (arg: FormValues) => void;
   setIsLoggedIn: (arg: boolean) => void;
-  backendData: object;
+  setAutenthicationFailed: (arg: boolean) => void;
+  setActiveUser: (arg: any) => void;
 }) {
   // const initialValues: FormValues = { email: 'john.doe@email.sk', password: 'john.doe@email.skjohn.doe@email.sk' }
   const initialValues: FormValues = {
@@ -13,6 +13,24 @@ export default function LoginForm(props: {
     password: "roth.malder@email.comroth.malder@email.com",
   };
   // const initialValues: FormValues = { email: 'jane.doe@email.eu', password: 'jane.doe@email.eujane.doe@email.eu' }
+
+  async function Login(values: FormValues) {
+    const response = await fetch("/api", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    });
+
+    const data = await response.json();
+
+    if (data.length === 1) {
+      props.setIsLoggedIn(true);
+      props.setAutenthicationFailed(false);
+      props.setActiveUser(data[0]);
+    } else {
+      props.setAutenthicationFailed(true);
+    }
+  }
 
   return (
     <div>
@@ -28,7 +46,7 @@ export default function LoginForm(props: {
             .required("Required"),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          props.login(values);
+          Login(values);
           setSubmitting(false);
         }}
       >
