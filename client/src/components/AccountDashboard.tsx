@@ -6,12 +6,16 @@ export default function AccountDashboard(props: {
   signedUser: Provider;
   setIsLoggedIn: (arg: boolean) => void;
 }) {
-  function postData(values: Provider) {
-    fetch("/users", {
+  async function postData(values: Provider) {
+    const response = await fetch("/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
+
+    response.status === 200
+      ? alert("Data saved")
+      : alert("Failed to save data");
   }
 
   return (

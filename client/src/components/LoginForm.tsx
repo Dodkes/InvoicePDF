@@ -1,20 +1,26 @@
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
-import { FormValues } from "../types";
+import { LoginValues } from "../types";
 
 export default function LoginForm(props: {
   setIsLoggedIn: (arg: boolean) => void;
   setAutenthicationFailed: (arg: boolean) => void;
   setActiveUser: (arg: object) => void;
 }) {
-  // const initialValues: FormValues = { email: 'john.doe@email.sk', password: 'john.doe@email.skjohn.doe@email.sk' }
-  const initialValues: FormValues = {
-    email: "roth.malder@email.com",
-    password: "roth.malder@email.comroth.malder@email.com",
+  const initialValues: LoginValues = {
+    email: "john.doe@email.sk",
+    password: "john.doe@email.skjohn.doe@email.sk",
   };
-  // const initialValues: FormValues = { email: 'jane.doe@email.eu', password: 'jane.doe@email.eujane.doe@email.eu' }
+  // const initialValues: FormValues = {
+  //   email: "roth.malder@email.com",
+  //   password: "roth.malder@email.comroth.malder@email.com",
+  // };
+  // const initialValues: FormValues = {
+  //   email: "jane.doe@email.eu",
+  //   password: "jane.doe@email.eujane.doe@email.eu",
+  // };
 
-  async function Login(values: FormValues) {
+  async function Login(values: LoginValues) {
     const response = await fetch("/api", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
