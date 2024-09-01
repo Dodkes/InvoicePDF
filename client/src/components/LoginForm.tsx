@@ -7,15 +7,15 @@ export default function LoginForm(props: {
   setAutenthicationFailed: (arg: boolean) => void;
   setActiveUser: (arg: object) => void;
 }) {
-  const initialValues: LoginValues = {
+  const loginInitials: LoginValues = {
     email: "john.doe@email.sk",
     password: "john.doe@email.skjohn.doe@email.sk",
   };
-  // const initialValues: FormValues = {
+  // const loginInitials: FormValues = {
   //   email: "roth.malder@email.com",
   //   password: "roth.malder@email.comroth.malder@email.com",
   // };
-  // const initialValues: FormValues = {
+  // const loginInitials: FormValues = {
   //   email: "jane.doe@email.eu",
   //   password: "jane.doe@email.eujane.doe@email.eu",
   // };
@@ -42,7 +42,7 @@ export default function LoginForm(props: {
     <div>
       <h1>Sign in</h1>
       <Formik
-        initialValues={initialValues}
+        initialValues={loginInitials}
         validationSchema={Yup.object({
           email: Yup.string()
             .email("Neplatná emailová adresa")
