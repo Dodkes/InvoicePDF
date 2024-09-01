@@ -1,11 +1,29 @@
 import { Formik, Field, ErrorMessage, Form } from "formik";
+import * as Yup from "yup";
+
+const registerInitials = {
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
 export default function RegisterForm() {
   return (
     <div>
       <h1>Register account</h1>
       <Formik
-        initialValues={{ registerEmail: "" }}
+        initialValues={registerInitials}
+        validationSchema={Yup.object({
+          email: Yup.string()
+            .email("Invalid email address")
+            .required("Required"),
+          password: Yup.string()
+            .min(5, "Required at least 5 symbols")
+            .required("Required"),
+          confirmPassword: Yup.string()
+            .required("Required")
+            .oneOf([Yup.ref("password")], "Passwords must match"),
+        })}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
         }}
@@ -13,14 +31,10 @@ export default function RegisterForm() {
         {({ isSubmitting }) => (
           <Form>
             <div>
-              <label htmlFor="registerEmail">Email</label>
+              <label htmlFor="email">Email</label>
               <br />
-              <Field
-                type="email"
-                name="registerEmail"
-                placeholder="Your email"
-              />
-              <ErrorMessage name="registerEmail" component="div" />
+              <Field type="email" name="email" placeholder="Your email" />
+              <ErrorMessage name="email" component="div" />
             </div>
             <div>
               <label htmlFor="password">Password</label>
@@ -33,14 +47,14 @@ export default function RegisterForm() {
               <ErrorMessage name="password" component="div" />
             </div>
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="confirmPassword">Confirm Password</label>
               <br />
               <Field
                 type="password"
-                name="passwordConfirm"
+                name="confirmPassword"
                 placeholder="Your password"
               />
-              <ErrorMessage name="password" component="div" />
+              <ErrorMessage name="confirmPassword" component="div" />
             </div>
             <button type="submit" disabled={isSubmitting}>
               Submit
