@@ -23,7 +23,7 @@ app.post("/users", (req, res) => {
 
     fs.writeFile(
       path.join(__dirname, "db.json"),
-      JSON.stringify(parsedData),
+      JSON.stringify(parsedData, null, 10),
       () => {
         res.send("File written successfully");
       }
@@ -44,12 +44,11 @@ app.post("/api", (req, res) => {
 
 app.post("/register", (req, res) => {
   fs.readFile(path.join(__dirname, "db.json"), "utf8", (err, data) => {
-    const parsedData = JSON.parse(data);
-    const verifyUser = parsedData.filter(
-      (user) => user.email === req.body.email
-    );
+    const dbData = JSON.parse(data);
+    const verifyUser = dbData.filter((user) => user.email === req.body.email);
     if (verifyUser.length) {
       res.sendStatus(409);
+      return;
     } else {
       const newUser = {
         email: req.body.email,
@@ -65,8 +64,20 @@ app.post("/register", (req, res) => {
         registered: "",
         IBAN: "",
       };
-      console.log(newUser);
-      res.sendStatus(200);
+      dbData.push(newUser);
+
+      fs.writeFile(
+        path.join(__dirname, "db.json"),
+        JSON.stringify(dbData, null, 10),
+        (err) => {
+          // if (err) {
+          //   console.log("Error saving to DB:", err);
+          //   res.sendStatus(500, "Internal server error");
+          //   return;
+          // }
+          res.send("File written successfully");
+        }
+      );
     }
   });
 });
