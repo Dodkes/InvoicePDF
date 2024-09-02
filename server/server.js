@@ -42,6 +42,17 @@ app.post("/api", (req, res) => {
   });
 });
 
+app.post("/register", (req, res) => {
+  fs.readFile(path.join(__dirname, "db.json"), "utf8", (err, data) => {
+    const parsedData = JSON.parse(data);
+    const verifyUser = parsedData.filter(
+      (user) => user.email === req.body.email
+    );
+    if (verifyUser.length) res.sendStatus(409);
+    else res.sendStatus(200);
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });

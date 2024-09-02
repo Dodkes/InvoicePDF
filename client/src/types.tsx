@@ -3,6 +3,10 @@ export interface LoginValues {
   password: string;
 }
 
+export interface RegisterValues extends LoginValues {
+  confirmPassword: string;
+}
+
 export interface Customer {
   name: string;
   street: string;

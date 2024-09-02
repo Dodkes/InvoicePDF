@@ -1,18 +1,34 @@
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
+import { RegisterValues } from "../types";
 
-const registerInitials = {
-  email: "",
-  password: "",
-  confirmPassword: "",
-};
+async function registerAccount(values: RegisterValues) {
+  try {
+    const response = await fetch("/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    });
+
+    if (response.status === 409) {
+      return console.log("Email already exists");
+    }
+    console.log("Successfuly registered");
+  } catch (err) {
+    console.log("Something went wrong", err);
+  }
+}
 
 export default function RegisterForm() {
   return (
     <div>
       <h1>Register account</h1>
       <Formik
-        initialValues={registerInitials}
+        initialValues={{
+          email: "",
+          password: "",
+          confirmPassword: "",
+        }}
         validationSchema={Yup.object({
           email: Yup.string()
             .email("Invalid email address")
@@ -25,7 +41,8 @@ export default function RegisterForm() {
             .oneOf([Yup.ref("password")], "Passwords must match"),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values);
+          setSubmitting(false);
+          registerAccount(values);
         }}
       >
         {({ isSubmitting }) => (
