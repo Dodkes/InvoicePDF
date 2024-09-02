@@ -48,8 +48,26 @@ app.post("/register", (req, res) => {
     const verifyUser = parsedData.filter(
       (user) => user.email === req.body.email
     );
-    if (verifyUser.length) res.sendStatus(409);
-    else res.sendStatus(200);
+    if (verifyUser.length) {
+      res.sendStatus(409);
+    } else {
+      const newUser = {
+        email: req.body.email,
+        password: req.body.password,
+        name: "",
+        organisation: "",
+        street: "",
+        city: "",
+        ZIP: 0,
+        country: "",
+        ICO: 0,
+        DIC: 0,
+        registered: "",
+        IBAN: "",
+      };
+      console.log(newUser);
+      res.sendStatus(200);
+    }
   });
 });
 
