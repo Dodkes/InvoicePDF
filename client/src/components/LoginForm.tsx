@@ -26,14 +26,14 @@ export default function LoginForm(props: {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
-
-    const data = await response.json();
-    if (data) {
-      props.setIsLoggedIn(true);
-      props.setAutenthicationFailed(false);
-      props.setActiveUser(data);
-      console.log(data);
-    } else {
+    if (response.status === 200) {
+      const data = await response.json();
+      if (data) {
+        props.setIsLoggedIn(true);
+        props.setAutenthicationFailed(false);
+        props.setActiveUser(data);
+      }
+    } else if (response.status === 401) {
       props.setAutenthicationFailed(true);
     }
   }

@@ -40,8 +40,9 @@ app.post("/api", (req, res) => {
     );
     if (verifyUser.length === 1) {
       res.send(verifyUser[0].providerData);
+    } else {
+      res.sendStatus(401);
     }
-    //TODO: send response if no user exists and handle on front end side
   });
 });
 
