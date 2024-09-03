@@ -15,11 +15,11 @@ app.post("/users", (req, res) => {
     const parsedData = JSON.parse(data);
 
     const match = parsedData.filter(
-      (user) => user.password === req.body.password
+      (user) => user.providerData.email === req.body.email
     );
     const getIndex = parsedData.indexOf(match[0]);
 
-    parsedData[getIndex] = req.body;
+    parsedData[getIndex].providerData = req.body;
 
     fs.writeFile(
       path.join(__dirname, "db.json"),
