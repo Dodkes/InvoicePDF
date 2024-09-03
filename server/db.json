@@ -1,58 +1,70 @@
 [
-          {
-                    "email": "roth.malder@email.com",
-                    "password": "roth.malder@email.comroth.malder@email.com",
-                    "name": "Roth Malder",
-                    "organisation": "Roth Company",
-                    "street": "Jána Hollého 1056/5",
-                    "city": "Michalovce",
-                    "ZIP": 71005,
-                    "country": "Slovensko",
-                    "ICO": 55902227,
-                    "DIC": 1120397267,
-                    "registered": "Okresný úrad Michalovce, Číslo živnostenského registra: 324-34526",
-                    "IBAN": "SK72 2222 0000 0029 6259 7873"
-          },
-          {
-                    "email": "john.doe@email.sk",
-                    "password": "john.doe@email.skjohn.doe@email.sk",
-                    "name": "John Doe",
-                    "organisation": "John Company",
-                    "street": "Jána Hollého 1056/5",
-                    "city": "Las Vegas",
-                    "ZIP": 890810,
-                    "country": "Nevada",
-                    "ICO": 55902227,
-                    "DIC": 1120397267,
-                    "registered": "Okresný úrad Michalovce, Číslo živnostenského registra: 435-33456",
-                    "IBAN": "SK72 2222 0000 0029 6259 1234"
-          },
-          {
-                    "email": "jane.doe@email.eu",
-                    "password": "jane.doe@email.eujane.doe@email.eu",
-                    "name": "Jane Doe",
-                    "organisation": "Jane Company",
-                    "street": "Red street 384",
-                    "city": "Dallas",
-                    "ZIP": 79421,
-                    "country": "Texas",
-                    "ICO": 95907254,
-                    "DIC": 9034397267,
-                    "registered": "Okresný úrad Michalovce, Číslo živnostenského registra: 840-31636",
-                    "IBAN": "SK72 2222 0000 0029 6259 5460"
-          },
-          {
-                    "email": "test@test.com",
-                    "password": "test@test.com",
-                    "name": "",
-                    "organisation": "",
-                    "street": "",
-                    "city": "",
-                    "ZIP": 94892,
-                    "country": "",
-                    "ICO": 0,
-                    "DIC": 0,
-                    "registered": "",
-                    "IBAN": ""
-          }
+    {
+        "email": "roth.malder@email.com",
+        "password": "roth.malder@email.comroth.malder@email.com",
+        "providerData": {
+            "email": "roth.malder@email.com",
+            "name": "Roth Malder",
+            "organisation": "Roth Company",
+            "street": "Jána Hollého 1056/5",
+            "city": "Michalovce",
+            "ZIP": 71005,
+            "country": "Slovensko",
+            "ICO": 55902227,
+            "DIC": 1120397267,
+            "registered": "Okresný úrad Michalovce, Číslo živnostenského registra: 324-34526",
+            "IBAN": "SK72 2222 0000 0029 6259 7873"
+        }
+    },
+    {
+        "email": "john.doe@email.sk",
+        "password": "john.doe@email.skjohn.doe@email.sk",
+        "providerData": {
+            "email": "john.doe@email.sk",
+            "name": "John Doe",
+            "organisation": "John Company",
+            "street": "Jána Hollého 1056/5",
+            "city": "Las Vegas",
+            "ZIP": 890810,
+            "country": "Nevada",
+            "ICO": 55902227,
+            "DIC": 1120397267,
+            "registered": "Okresný úrad Michalovce, Číslo živnostenského registra: 435-33456",
+            "IBAN": "SK72 2222 0000 0029 6259 1234"
+        }
+    },
+    {
+        "email": "jane.doe@email.eu",
+        "password": "jane.doe@email.eujane.doe@email.eu",
+        "providerData": {
+            "email": "jane.doe@email.eu",
+            "name": "Jane Doe",
+            "organisation": "Jane Company",
+            "street": "Red street 384",
+            "city": "Dallas",
+            "ZIP": 79421,
+            "country": "Texas",
+            "ICO": 95907254,
+            "DIC": 9034397267,
+            "registered": "Okresný úrad Michalovce, Číslo živnostenského registra: 840-31636",
+            "IBAN": "SK72 2222 0000 0029 6259 5460"
+        }
+    },
+    {
+        "email": "test@test.com",
+        "password": "test@test.com",
+        "providerData": {
+            "email": "test@test.com",
+            "name": "",
+            "organisation": "",
+            "street": "",
+            "city": "",
+            "ZIP": 94892,
+            "country": "",
+            "ICO": 0,
+            "DIC": 0,
+            "registered": "",
+            "IBAN": ""
+        }
+    }
 ]

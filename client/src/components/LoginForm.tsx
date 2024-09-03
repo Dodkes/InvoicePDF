@@ -28,11 +28,11 @@ export default function LoginForm(props: {
     });
 
     const data = await response.json();
-
-    if (data.length === 1) {
+    if (data) {
       props.setIsLoggedIn(true);
       props.setAutenthicationFailed(false);
-      props.setActiveUser(data[0]);
+      props.setActiveUser(data);
+      console.log(data);
     } else {
       props.setAutenthicationFailed(true);
     }

@@ -38,7 +38,10 @@ app.post("/api", (req, res) => {
       (user) =>
         user.email === req.body.email && user.password === req.body.password
     );
-    res.send(verifyUser);
+    if (verifyUser.length === 1) {
+      res.send(verifyUser[0].providerData);
+    }
+    //TODO: send response if no user exists and handle on front end side
   });
 });
 
