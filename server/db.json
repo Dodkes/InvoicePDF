@@ -55,16 +55,16 @@
                     "password": "test@test.com",
                     "providerData": {
                               "email": "test@test.com",
-                              "name": "",
-                              "organisation": "",
-                              "street": "",
-                              "city": "",
-                              "ZIP": 94892,
-                              "country": "",
-                              "ICO": 0,
-                              "DIC": 0,
-                              "registered": "",
-                              "IBAN": ""
+                              "name": "Test user",
+                              "organisation": "Company, s. r. o.",
+                              "street": "Hlavna 34",
+                              "city": "Kosice",
+                              "ZIP": 8020,
+                              "country": "Slovakia",
+                              "ICO": 8745384,
+                              "DIC": 283928323,
+                              "registered": "Okresny urad Kosice",
+                              "IBAN": "SK XXXX"
                     }
           }
 ]

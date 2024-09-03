@@ -45,10 +45,10 @@ export default function LoginForm(props: {
         initialValues={loginInitials}
         validationSchema={Yup.object({
           email: Yup.string()
-            .email("Neplatná emailová adresa")
+            .email("Ivalid email address")
             .required("Required"),
           password: Yup.string()
-            .min(8, "Heslo musí mať aspoň 8 znakov")
+            .min(8, "Required at lease 8 symbols")
             .required("Required"),
         })}
         onSubmit={(values, { setSubmitting }) => {

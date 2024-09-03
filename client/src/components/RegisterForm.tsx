@@ -34,7 +34,7 @@ export default function RegisterForm() {
             .email("Invalid email address")
             .required("Required"),
           password: Yup.string()
-            .min(5, "Required at least 5 symbols")
+            .min(8, "Required at least 8 symbols")
             .required("Required"),
           confirmPassword: Yup.string()
             .required("Required")

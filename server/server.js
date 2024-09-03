@@ -25,7 +25,7 @@ app.post("/users", (req, res) => {
       path.join(__dirname, "db.json"),
       JSON.stringify(parsedData, null, 10),
       () => {
-        res.send("File written successfully");
+        res.sendStatus(200);
       }
     );
   });
@@ -57,29 +57,27 @@ app.post("/register", (req, res) => {
       const newUser = {
         email: req.body.email,
         password: req.body.password,
-        name: "",
-        organisation: "",
-        street: "",
-        city: "",
-        ZIP: 0,
-        country: "",
-        ICO: 0,
-        DIC: 0,
-        registered: "",
-        IBAN: "",
+        providerData: {
+          email: req.body.email,
+          name: "",
+          organisation: "",
+          street: "",
+          city: "",
+          ZIP: "",
+          country: "",
+          ICO: "",
+          DIC: "",
+          registered: "",
+          IBAN: "",
+        },
       };
       dbData.push(newUser);
 
       fs.writeFile(
         path.join(__dirname, "db.json"),
         JSON.stringify(dbData, null, 10),
-        (err) => {
-          // if (err) {
-          //   console.log("Error saving to DB:", err);
-          //   res.sendStatus(500, "Internal server error");
-          //   return;
-          // }
-          res.send("File written successfully");
+        () => {
+          res.sendStatus(200);
         }
       );
     }
