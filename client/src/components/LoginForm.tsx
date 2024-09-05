@@ -7,21 +7,21 @@ export default function LoginForm(props: {
   setAutenthicationFailed: (arg: boolean) => void;
   setActiveUser: (arg: object) => void;
 }) {
-  const loginInitials: LoginValues = {
-    email: "john.doe@email.sk",
-    password: "john.doe@email.skjohn.doe@email.sk",
-  };
-  // const loginInitials: FormValues = {
+  // const loginInitials: LoginValues = {
+  //   email: "john.doe@email.sk",
+  //   password: "john.doe@email.skjohn.doe@email.sk",
+  // };
+  // const loginInitials: LoginValues = {
   //   email: "roth.malder@email.com",
   //   password: "roth.malder@email.comroth.malder@email.com",
   // };
-  // const loginInitials: FormValues = {
-  //   email: "jane.doe@email.eu",
-  //   password: "jane.doe@email.eujane.doe@email.eu",
-  // };
+  const loginInitials: LoginValues = {
+    email: "jane.doe@email.eu",
+    password: "jane.doe@email.eujane.doe@email.eu",
+  };
 
   async function Login(values: LoginValues) {
-    const response = await fetch("/api", {
+    const response = await fetch("/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
