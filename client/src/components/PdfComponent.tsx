@@ -41,7 +41,7 @@ const items = [
   ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"],
 ];
 
-export default function PdfComponent() {
+export default function PdfComponent(props: any) {
   const generatePDF = () => {
     const docDefinition = {
       content: [
@@ -65,14 +65,14 @@ export default function PdfComponent() {
         {
           columns: [
             {
-              text: `${provider.name}
-                            ${provider.street}
-                            ${provider.ZIP} ${provider.city}
-                            ${provider.country}
+              text: `${props.provider.name}
+                            ${props.provider.street}
+                            ${props.provider.ZIP} ${props.provider.city}
+                            ${props.provider.country}
                             
-                            IČO: ${provider.ICO}
-                            DIČ: ${provider.DIC}
-                            ${provider.registered}`,
+                            IČO: ${props.provider.ICO}
+                            DIČ: ${props.provider.DIC}
+                            ${props.provider.registered}`,
             },
             {
               text: `${customer.name}
@@ -127,7 +127,12 @@ export default function PdfComponent() {
                 "Dátum splatnosti",
                 "Suma na úhradu",
               ],
-              [provider.IBAN, provider.invoiceNumber, invoice.dueDate, "700 €"],
+              [
+                props.provider.IBAN,
+                provider.invoiceNumber,
+                invoice.dueDate,
+                "700 €",
+              ],
             ],
           },
         },

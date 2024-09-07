@@ -1,11 +1,14 @@
 import { Provider } from "../types";
 import PdfComponent from "./PdfComponent";
 import { Formik, Field, Form } from "formik";
+import { useState } from "react";
 
 export default function AccountDashboard(props: {
   signedUser: Provider;
   setIsLoggedIn: (arg: boolean) => void;
 }) {
+  const [provider, setProvider] = useState<Provider>(props.signedUser);
+
   async function postData(values: Provider) {
     const response = await fetch("/users", {
       method: "POST",
@@ -28,6 +31,7 @@ export default function AccountDashboard(props: {
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
           postData(values);
+          setProvider(values);
         }}
       >
         {({ isSubmitting }) => (
@@ -93,12 +97,12 @@ export default function AccountDashboard(props: {
             </div>
 
             <button type="submit" disabled={isSubmitting}>
-              Submit
+              Save
             </button>
           </Form>
         )}
       </Formik>
-      <PdfComponent />
+      <PdfComponent provider={provider} />
     </div>
   );
 }
