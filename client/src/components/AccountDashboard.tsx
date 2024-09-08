@@ -1,4 +1,5 @@
 import { Provider } from "../types";
+import CostumerData from "./CostumerData";
 import PdfComponent from "./PdfComponent";
 import { Formik, Field, Form } from "formik";
 import { useState } from "react";
@@ -10,6 +11,8 @@ export default function AccountDashboard(props: {
   const [provider, setProvider] = useState<Provider>(props.signedUser);
 
   async function postData(values: Provider) {
+    setProvider(values); //send to PDF component for rendering
+
     const response = await fetch("/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -29,9 +32,8 @@ export default function AccountDashboard(props: {
       <Formik
         initialValues={props.signedUser}
         onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(false);
           postData(values);
-          setProvider(values);
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting }) => (
@@ -102,6 +104,7 @@ export default function AccountDashboard(props: {
           </Form>
         )}
       </Formik>
+      <CostumerData />
       <PdfComponent provider={provider} />
     </div>
   );

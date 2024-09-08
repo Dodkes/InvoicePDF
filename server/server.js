@@ -49,7 +49,11 @@ app.post("/login", (req, res) => {
     );
 
     if (match) {
-      res.send(verifyUser[0].providerData);
+      const response = {
+        providerData: verifyUser[0].providerData,
+        costumerData: verifyUser[0].costumerData,
+      };
+      res.send(response);
     } else {
       res.sendStatus(401);
     }
@@ -80,6 +84,15 @@ app.post("/register", (req, res) => {
           DIC: "",
           registered: "",
           IBAN: "",
+        },
+        costumerData: {
+          name: "",
+          street: "",
+          city: "",
+          ZIP: "",
+          country: "",
+          ICO: "",
+          DIC: "",
         },
       };
       dbData.push(newUser);
