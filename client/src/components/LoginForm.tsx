@@ -5,7 +5,8 @@ import { LoginValues } from "../types";
 export default function LoginForm(props: {
   setIsLoggedIn: (arg: boolean) => void;
   setAutenthicationFailed: (arg: boolean) => void;
-  setActiveUser: (arg: object) => void;
+  setProviderData: (arg: object) => void;
+  setCostumerData: (arg: object) => void;
 }) {
   const loginInitials: LoginValues = {
     email: "john.doe@email.sk",
@@ -31,8 +32,8 @@ export default function LoginForm(props: {
       if (data) {
         props.setIsLoggedIn(true);
         props.setAutenthicationFailed(false);
-        props.setActiveUser(data.providerData);
-        console.log(data);
+        props.setProviderData(data.providerData);
+        props.setCostumerData(data.costumerData);
       }
     } else if (response.status === 401) {
       props.setAutenthicationFailed(true);

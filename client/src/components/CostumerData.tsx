@@ -1,22 +1,11 @@
 import { Field, Form, Formik } from "formik";
 import { Customer } from "../types";
 
-export default function CostumerData() {
-  const customer: Customer = {
-    name: "Company, s. r. o.",
-    street: "Jarná 48",
-    city: "Bratislava",
-    ZIP: 81109,
-    country: "Slovensko",
-    ICO: 49081240,
-    DIC: 4564367832,
-  };
-
+export default function CostumerData(props: { costumerData: Customer }) {
   return (
     <div>
       <Formik
-        initialValues={customer}
-        // initialValues={props.signedUser}
+        initialValues={props.costumerData}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
           setSubmitting(false);

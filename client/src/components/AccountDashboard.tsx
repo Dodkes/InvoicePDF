@@ -1,14 +1,15 @@
-import { Provider } from "../types";
+import { Provider, Customer } from "../types";
 import CostumerData from "./CostumerData";
 import PdfComponent from "./PdfComponent";
 import { Formik, Field, Form } from "formik";
 import { useState } from "react";
 
 export default function AccountDashboard(props: {
-  signedUser: Provider;
+  providerData: Provider;
+  costumerData: Customer;
   setIsLoggedIn: (arg: boolean) => void;
 }) {
-  const [provider, setProvider] = useState<Provider>(props.signedUser);
+  const [provider, setProvider] = useState<Provider>(props.providerData);
 
   async function postData(values: Provider) {
     setProvider(values); //send to PDF component for rendering
@@ -26,11 +27,11 @@ export default function AccountDashboard(props: {
 
   return (
     <div>
-      <h3>Account: {props.signedUser.name}</h3>
+      <h3>Account: {props.providerData.name}</h3>
       <button onClick={() => props.setIsLoggedIn(false)}>Log out</button>
 
       <Formik
-        initialValues={props.signedUser}
+        initialValues={props.providerData}
         onSubmit={(values, { setSubmitting }) => {
           postData(values);
           setSubmitting(false);
@@ -104,7 +105,7 @@ export default function AccountDashboard(props: {
           </Form>
         )}
       </Formik>
-      <CostumerData />
+      <CostumerData costumerData={props.costumerData} />
       <PdfComponent provider={provider} />
     </div>
   );

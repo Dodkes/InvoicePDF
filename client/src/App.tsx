@@ -8,9 +8,10 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [authenticationFailed, setAutenthicationFailed] =
     useState<boolean>(false);
-  const [activeUser, setActiveUser] = useState<any>({});
+  const [providerData, setProviderData] = useState<any>({});
+  const [costumerData, setCostumerData] = useState<any>({});
   const [registerScreen, setRegisterScreen] = useState<boolean>(false);
-
+  console.log(costumerData);
   return (
     <div className="App">
       {!isLoggedIn ? (
@@ -24,7 +25,8 @@ function App() {
             <LoginForm
               setIsLoggedIn={setIsLoggedIn}
               setAutenthicationFailed={setAutenthicationFailed}
-              setActiveUser={setActiveUser}
+              setProviderData={setProviderData}
+              setCostumerData={setCostumerData}
             />
             <button onClick={() => setRegisterScreen(true)}>
               Register Mode
@@ -34,7 +36,8 @@ function App() {
       ) : (
         <AccountDashboard
           setIsLoggedIn={setIsLoggedIn}
-          signedUser={activeUser}
+          providerData={providerData}
+          costumerData={costumerData}
         />
       )}
       {authenticationFailed && <p>Authentication failed !</p>}
