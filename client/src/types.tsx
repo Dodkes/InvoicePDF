@@ -7,7 +7,7 @@ export interface RegisterValues extends LoginValues {
   confirmPassword: string;
 }
 
-export interface Customer {
+export interface Costumer {
   name: string;
   street: string;
   city: string;
@@ -17,7 +17,7 @@ export interface Customer {
   DIC: number;
 }
 
-export interface Provider extends Customer {
+export interface Provider extends Costumer {
   invoiceNumber: number;
   registered: string;
   IBAN: string;

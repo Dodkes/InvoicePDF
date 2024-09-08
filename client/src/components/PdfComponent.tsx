@@ -1,32 +1,10 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { Customer } from "../types";
+import { Costumer } from "../types";
 import { Provider } from "../types";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const provider: Provider = {
-  invoiceNumber: 2024001,
-  name: "Mgr. Jozef Žitt",
-  street: "Jána Hollého 1056/5",
-  city: "Michalovce",
-  ZIP: 71001,
-  country: "Slovensko",
-  ICO: 55902227,
-  DIC: 1120397267,
-  registered:
-    "Okresný úrad Michalovce, Číslo živnostenského registra: 840-31636",
-  IBAN: "SK72 2222 0000 0029 6259 7873",
-};
-
-const customer: Customer = {
-  name: "Company, s. r. o.",
-  street: "Jarná 48",
-  city: "Bratislava",
-  ZIP: 81109,
-  country: "Slovensko",
-  ICO: 49081240,
-  DIC: 4564367832,
-};
+const invoiceNumber = 2024001;
 
 const invoice = {
   issueDate: new Date().toLocaleDateString(),
@@ -41,12 +19,15 @@ const items = [
   ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"],
 ];
 
-export default function PdfComponent(props: any) {
+export default function PdfComponent(props: {
+  provider: Provider;
+  costumer: Costumer;
+}) {
   const generatePDF = () => {
     const docDefinition = {
       content: [
         {
-          text: `Faktúra ${provider.invoiceNumber}`,
+          text: `Faktúra ${invoiceNumber}`,
           style: "h1",
         },
         {
@@ -75,13 +56,13 @@ export default function PdfComponent(props: any) {
                             ${props.provider.registered}`,
             },
             {
-              text: `${customer.name}
-                            ${customer.street}
-                            ${customer.ZIP} ${customer.city}
-                            ${customer.country}
+              text: `${props.costumer.name}
+                            ${props.costumer.street}
+                            ${props.costumer.ZIP} ${props.costumer.city}
+                            ${props.costumer.country}
 
-                            IČO: ${customer.ICO}
-                            DIČ: ${customer.DIC}`,
+                            IČO: ${props.costumer.ICO}
+                            DIČ: ${props.costumer.DIC}`,
             },
           ],
         },
@@ -127,12 +108,7 @@ export default function PdfComponent(props: any) {
                 "Dátum splatnosti",
                 "Suma na úhradu",
               ],
-              [
-                props.provider.IBAN,
-                provider.invoiceNumber,
-                invoice.dueDate,
-                "700 €",
-              ],
+              [props.provider.IBAN, invoiceNumber, invoice.dueDate, "700 €"],
             ],
           },
         },
