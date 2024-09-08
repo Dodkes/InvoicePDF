@@ -11,7 +11,9 @@ function App() {
   const [providerData, setProviderData] = useState<any>({});
   const [costumerData, setCostumerData] = useState<any>({});
   const [registerScreen, setRegisterScreen] = useState<boolean>(false);
-  console.log(costumerData);
+
+  const [signedUser, setSignedUser] = useState<string>("");
+
   return (
     <div className="App">
       {!isLoggedIn ? (
@@ -23,6 +25,7 @@ function App() {
         ) : (
           <>
             <LoginForm
+              setSignedUser={setSignedUser}
               setIsLoggedIn={setIsLoggedIn}
               setAutenthicationFailed={setAutenthicationFailed}
               setProviderData={setProviderData}
@@ -38,6 +41,7 @@ function App() {
           setIsLoggedIn={setIsLoggedIn}
           providerData={providerData}
           costumerData={costumerData}
+          signedUser={signedUser}
         />
       )}
       {authenticationFailed && <p>Authentication failed !</p>}

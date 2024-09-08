@@ -12,7 +12,27 @@ const port = 8080;
 const saltRounds = 10;
 app.use(express.json());
 
-app.post("/users", (req, res) => {
+app.post("/costumerData", (req, res) => {
+  fs.readFile(path.join(__dirname, "db.json"), "utf8", (err, data) => {
+    const parsedData = JSON.parse(data);
+
+    const getIndex = parsedData.findIndex(
+      (user) => user.providerData.email === req.body.signedUser
+    );
+
+    parsedData[getIndex].costumerData = req.body.costumerData;
+
+    fs.writeFile(
+      path.join(__dirname, "db.json"),
+      JSON.stringify(parsedData, null, 10),
+      () => {
+        res.sendStatus(200);
+      }
+    );
+  });
+});
+
+app.post("/providerData", (req, res) => {
   fs.readFile(path.join(__dirname, "db.json"), "utf8", (err, data) => {
     const parsedData = JSON.parse(data);
 
