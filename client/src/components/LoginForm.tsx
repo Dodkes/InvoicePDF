@@ -7,6 +7,7 @@ export default function LoginForm(props: {
   setAutenthicationFailed: (arg: boolean) => void;
   setProviderData: (arg: object) => void;
   setCostumerData: (arg: object) => void;
+  setSignedUser: (arg: string) => void;
 }) {
   const loginInitials: LoginValues = {
     email: "john.doe@email.sk",
@@ -32,6 +33,7 @@ export default function LoginForm(props: {
       if (data) {
         props.setIsLoggedIn(true);
         props.setAutenthicationFailed(false);
+        props.setSignedUser(data.providerData.email);
         props.setProviderData(data.providerData);
         props.setCostumerData(data.costumerData);
       }

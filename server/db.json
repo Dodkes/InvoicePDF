@@ -13,15 +13,15 @@
                               "ICO": 9,
                               "DIC": 20,
                               "registered": "Doma",
-                              "IBAN": ""
+                              "IBAN": "SKXX"
                     },
                     "costumerData": {
                               "name": "Works, s. r. o.",
-                              "street": "Jarná 48",
+                              "street": "Letna 22",
                               "city": "Bratislava",
-                              "ZIP": 81,
-                              "country": "Slovensko",
-                              "ICO": 49081240,
+                              "ZIP": 81120,
+                              "country": "Slovakia",
+                              "ICO": 49081241,
                               "DIC": 4564367832
                     }
           },

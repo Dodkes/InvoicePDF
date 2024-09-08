@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function AccountDashboard(props: {
   providerData: Provider;
   costumerData: Customer;
+  signedUser: string;
   setIsLoggedIn: (arg: boolean) => void;
 }) {
   const [provider, setProvider] = useState<Provider>(props.providerData);
@@ -14,7 +15,7 @@ export default function AccountDashboard(props: {
   async function postData(values: Provider) {
     setProvider(values); //send to PDF component for rendering
 
-    const response = await fetch("/users", {
+    const response = await fetch("/providerData", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -105,7 +106,10 @@ export default function AccountDashboard(props: {
           </Form>
         )}
       </Formik>
-      <CostumerData costumerData={props.costumerData} />
+      <CostumerData
+        signedUser={props.signedUser}
+        costumerData={props.costumerData}
+      />
       <PdfComponent provider={provider} />
     </div>
   );

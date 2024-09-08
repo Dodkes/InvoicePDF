@@ -1,13 +1,30 @@
 import { Field, Form, Formik } from "formik";
 import { Customer } from "../types";
 
-export default function CostumerData(props: { costumerData: Customer }) {
+export default function CostumerData(props: {
+  costumerData: Customer;
+  signedUser: string;
+}) {
+  async function postData(values: Customer) {
+    const reqBody = { signedUser: props.signedUser, costumerData: values };
+
+    const response = await fetch("/costumerData", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(reqBody),
+    });
+
+    response.status === 200
+      ? alert("Data saved")
+      : alert("Failed to save data");
+  }
+
   return (
     <div>
       <Formik
         initialValues={props.costumerData}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values);
+          postData(values);
           setSubmitting(false);
         }}
       >
