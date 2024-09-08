@@ -1,62 +1,62 @@
 [
-    {
-        "email": "john.doe@email.sk",
-        "password": "$2b$10$SLbttLFBEwk/yNlhNJRxQuNXl9vcmN63IixjNH/QJn8gz.9TVsd0m",
-        "providerData": {
-            "email": "john.doe@email.sk",
-            "name": "John Doe",
-            "organisation": "John Doe",
-            "street": "Bajkalska",
-            "city": "Bratislava",
-            "ZIP": 123457799,
-            "country": "Slovensko",
-            "ICO": 9,
-            "DIC": 20,
-            "registered": "",
-            "IBAN": ""
-        },
-        "costumerData": {
-            "name": "Works, s. r. o.",
-            "street": "Jarná 48",
-            "city": "Bratislava",
-            "ZIP": 81,
-            "country": "Slovensko",
-            "ICO": 49081240,
-            "DIC": 4564367832
-        }
-    },
-    {
-        "email": "roth.malder@email.com",
-        "password": "$2b$10$PQrRU76ctd5u4i7YdZma9OvO8IJQ3ZmAFlKfAHIJ8GdO3l2PVZeIq",
-        "providerData": {
-            "email": "roth.malder@email.com",
-            "name": "",
-            "organisation": "",
-            "street": "",
-            "city": "",
-            "ZIP": "",
-            "country": "",
-            "ICO": "",
-            "DIC": "",
-            "registered": "",
-            "IBAN": ""
-        }
-    },
-    {
-        "email": "jane.doe@email.eu",
-        "password": "$2b$10$g0V4Uf8Z6AzIlYixThmAJ.Dz2/24cfGSSzsLNEi7VfRS56i8L9516",
-        "providerData": {
-            "email": "jane.doe@email.eu",
-            "name": "Jozko",
-            "organisation": "Jozef s. r. o.",
-            "street": "Dlha 37",
-            "city": "Michalovce",
-            "ZIP": 92313,
-            "country": "Slovakia",
-            "ICO": 3824234,
-            "DIC": 324234,
-            "registered": "Okresny urad Kosice",
-            "IBAN": "SKXXXX"
-        }
-    }
+          {
+                    "email": "john.doe@email.sk",
+                    "password": "$2b$10$SLbttLFBEwk/yNlhNJRxQuNXl9vcmN63IixjNH/QJn8gz.9TVsd0m",
+                    "providerData": {
+                              "email": "john.doe@email.sk",
+                              "name": "John Doe",
+                              "organisation": "John Doe",
+                              "street": "Bajkalska",
+                              "city": "Bratislava",
+                              "ZIP": 123457799,
+                              "country": "Slovensko",
+                              "ICO": 9,
+                              "DIC": 20,
+                              "registered": "Doma",
+                              "IBAN": ""
+                    },
+                    "costumerData": {
+                              "name": "Works, s. r. o.",
+                              "street": "Jarná 48",
+                              "city": "Bratislava",
+                              "ZIP": 81,
+                              "country": "Slovensko",
+                              "ICO": 49081240,
+                              "DIC": 4564367832
+                    }
+          },
+          {
+                    "email": "roth.malder@email.com",
+                    "password": "$2b$10$PQrRU76ctd5u4i7YdZma9OvO8IJQ3ZmAFlKfAHIJ8GdO3l2PVZeIq",
+                    "providerData": {
+                              "email": "roth.malder@email.com",
+                              "name": "",
+                              "organisation": "",
+                              "street": "",
+                              "city": "",
+                              "ZIP": "",
+                              "country": "",
+                              "ICO": "",
+                              "DIC": "",
+                              "registered": "",
+                              "IBAN": ""
+                    }
+          },
+          {
+                    "email": "jane.doe@email.eu",
+                    "password": "$2b$10$g0V4Uf8Z6AzIlYixThmAJ.Dz2/24cfGSSzsLNEi7VfRS56i8L9516",
+                    "providerData": {
+                              "email": "jane.doe@email.eu",
+                              "name": "Jozko",
+                              "organisation": "Jozef s. r. o.",
+                              "street": "Dlha 37",
+                              "city": "Michalovce",
+                              "ZIP": 92313,
+                              "country": "Slovakia",
+                              "ICO": 3824234,
+                              "DIC": 324234,
+                              "registered": "Okresny urad Kosice",
+                              "IBAN": "SKXXXX"
+                    }
+          }
 ]

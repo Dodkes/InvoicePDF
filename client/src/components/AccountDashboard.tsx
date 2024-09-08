@@ -44,7 +44,7 @@ export default function AccountDashboard(props: {
               <div>
                 <label htmlFor="email">Email</label>
                 <br />
-                <Field type="email" name="email" />
+                <Field disabled type="email" name="email" />
               </div>
 
               <div>
