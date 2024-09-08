@@ -1,11 +1,12 @@
 import { Field, Form, Formik } from "formik";
-import { Customer } from "../types";
+import { Costumer } from "../types";
 
 export default function CostumerData(props: {
-  costumerData: Customer;
+  costumerData: Costumer;
   signedUser: string;
+  setCostumer: (arg: Costumer) => void;
 }) {
-  async function postData(values: Customer) {
+  async function postData(values: Costumer) {
     const reqBody = { signedUser: props.signedUser, costumerData: values };
 
     const response = await fetch("/costumerData", {
@@ -25,6 +26,7 @@ export default function CostumerData(props: {
         initialValues={props.costumerData}
         onSubmit={(values, { setSubmitting }) => {
           postData(values);
+          props.setCostumer(values);
           setSubmitting(false);
         }}
       >
