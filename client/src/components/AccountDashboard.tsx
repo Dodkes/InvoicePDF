@@ -1,6 +1,6 @@
 import { Provider, Costumer } from "../types";
 import CostumerData from "./CostumerData";
-import Invoice from "./Invoice";
+import InvoiceData from "./InvoiceData";
 import PdfComponent from "./PdfComponent";
 import { Formik, Field, Form } from "formik";
 import { useState } from "react";
@@ -11,8 +11,22 @@ export default function AccountDashboard(props: {
   signedUser: string;
   setIsLoggedIn: (arg: boolean) => void;
 }) {
+  const date = new Date();
+  const initialDate = {
+    year: date.getFullYear(),
+    month: String(date.getMonth() + 1).padStart(2, "0"),
+    day: String(date.getDate()).padStart(2, "0"),
+  };
+  const formatedDate = `${initialDate.year}-${initialDate.month}-${initialDate.day}`;
+  const [invoiceNumber, setInvoiceNumber] = useState<number>(
+    new Date().getFullYear() * 1000 + 1
+  );
+
   const [provider, setProvider] = useState<Provider>(props.providerData);
   const [costumer, setCostumer] = useState<Costumer>(props.costumerData);
+  const [issueDate, setIssueDate] = useState<string>(formatedDate);
+  const [deliveryDate, setDeliveryDate] = useState<string>(formatedDate);
+  const [dueDate, setDueDate] = useState<string>(formatedDate);
 
   async function postData(values: Provider) {
     setProvider(values); //send to PDF component for rendering
@@ -113,7 +127,16 @@ export default function AccountDashboard(props: {
         costumerData={props.costumerData}
         setCostumer={setCostumer}
       />
-      <Invoice />
+      <InvoiceData
+        issueDate={issueDate}
+        setIssueDate={setIssueDate}
+        deliveryDate={deliveryDate}
+        setDeliveryDate={setDeliveryDate}
+        dueDate={dueDate}
+        setDueDate={setDueDate}
+        invoiceNumber={invoiceNumber}
+        setInvoiceNumber={setInvoiceNumber}
+      />
       <PdfComponent provider={provider} costumer={costumer} />
     </div>
   );

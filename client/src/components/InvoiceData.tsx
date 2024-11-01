@@ -1,13 +1,24 @@
-import { useState } from "react";
+type InvoiceDataProps = {
+  issueDate: string;
+  setIssueDate: (arg: string) => void;
+  deliveryDate: string;
+  setDeliveryDate: (arg: string) => void;
+  dueDate: string;
+  setDueDate: (arg: string) => void;
+  invoiceNumber: number;
+  setInvoiceNumber: (arg: number) => void;
+};
 
-export default function Invoice() {
-  const [invoiceNumber, setInvoiceNumber] = useState<number>(
-    new Date().getFullYear() * 1000 + 1
-  );
-  const [issueDate, setIssueDate] = useState<string>("");
-  const [deliveryDate, setDeliveryDate] = useState<string>("");
-  const [dueDate, setDueDate] = useState<string>("");
-
+export default function InvoiceData({
+  issueDate,
+  setIssueDate,
+  deliveryDate,
+  setDeliveryDate,
+  dueDate,
+  setDueDate,
+  invoiceNumber,
+  setInvoiceNumber,
+}: InvoiceDataProps) {
   return (
     <>
       <h3>Invoice</h3>
@@ -48,7 +59,6 @@ export default function Invoice() {
             onChange={(e) => setDueDate(e.target.value)}
           />
         </div>
-        <br />
       </div>
     </>
   );
