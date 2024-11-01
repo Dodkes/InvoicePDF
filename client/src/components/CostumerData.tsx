@@ -32,7 +32,7 @@ export default function CostumerData(props: {
       >
         {({ isSubmitting }) => (
           <Form>
-            <h3>Costumer data</h3>
+            <h3>Costumer</h3>
             <div className="account-data-container">
               <div>
                 <label htmlFor="name">Company</label>

@@ -1,5 +1,6 @@
 import { Provider, Costumer } from "../types";
 import CostumerData from "./CostumerData";
+import Invoice from "./Invoice";
 import PdfComponent from "./PdfComponent";
 import { Formik, Field, Form } from "formik";
 import { useState } from "react";
@@ -41,7 +42,7 @@ export default function AccountDashboard(props: {
       >
         {({ isSubmitting }) => (
           <Form>
-            <h3>Provider data</h3>
+            <h3>Provider</h3>
             <div className="account-data-container">
               <div>
                 <label htmlFor="email">Email</label>
@@ -112,6 +113,7 @@ export default function AccountDashboard(props: {
         costumerData={props.costumerData}
         setCostumer={setCostumer}
       />
+      <Invoice />
       <PdfComponent provider={provider} costumer={costumer} />
     </div>
   );

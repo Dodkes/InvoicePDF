@@ -1,27 +1,30 @@
 body {
-  background-color: rgb(223, 223, 223);
+  background-color: rgb(125, 122, 122);
 }
 
 .App {
   text-align: center;
 }
 
-.account-data-container {
+.account-data-container,
+.invoice-data-container {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  text-align: left;
 }
 
-.account-data-container > div {
-  text-align: left;
+.account-data-container > div,
+.invoice-data-container > div {
   margin: 2px;
 }
 
 .formik-login-container {
-  position: relative;  
+  position: relative;
   margin-top: 5%;
 }
 
-.login-email, .login-password {
+.login-email,
+.login-password {
   text-align: left;
   width: fit-content;
   position: relative;

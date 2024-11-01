@@ -1,10 +1,11 @@
 # INSTALLATION & LOCAL RUN
 
+- use `npm i` to install dependencies
+
 In `./InvoicePDF/client`:
 
-- use `npm i` to install dependencies
-- to start application run `npm run dev`
+- to start application run `npm start`
 
 In `./InvoicePDF/server`:
 
-- run `npm run dev` to start local server
+- to start use `npm run dev` to start local server
