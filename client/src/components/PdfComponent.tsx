@@ -4,13 +4,13 @@ import { Costumer } from "../types";
 import { Provider } from "../types";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const invoiceNumber = 2024001;
+// const invoiceNumber = 2024001;
 
-const invoice = {
-  issueDate: new Date().toLocaleDateString(),
-  deliveryDate: new Date().toLocaleDateString(),
-  dueDate: new Date().toLocaleDateString(),
-};
+// const invoice = {
+//   issueDate: new Date().toLocaleDateString(),
+//   deliveryDate: new Date().toLocaleDateString(),
+//   dueDate: new Date().toLocaleDateString(),
+// };
 
 const items = [
   ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"],
@@ -22,12 +22,16 @@ const items = [
 export default function PdfComponent(props: {
   provider: Provider;
   costumer: Costumer;
+  invoiceNumber: number;
+  issueDate: string;
+  deliveryDate: string;
+  dueDate: string;
 }) {
   const generatePDF = () => {
     const docDefinition = {
       content: [
         {
-          text: `Faktúra ${invoiceNumber}`,
+          text: `Faktúra ${props.invoiceNumber}`,
           style: "h1",
         },
         {
@@ -67,9 +71,9 @@ export default function PdfComponent(props: {
           ],
         },
         {
-          text: `Dátum vystavenia: ${invoice.issueDate}
-                    Dátum dodania: ${invoice.deliveryDate}
-                    Dátum splatnosti ${invoice.dueDate}
+          text: `Dátum vystavenia: ${props.issueDate}
+                    Dátum dodania: ${props.deliveryDate}
+                    Dátum splatnosti ${props.dueDate}
                     `,
           style: "move",
         },
@@ -108,7 +112,12 @@ export default function PdfComponent(props: {
                 "Dátum splatnosti",
                 "Suma na úhradu",
               ],
-              [props.provider.IBAN, invoiceNumber, invoice.dueDate, "700 €"],
+              [
+                props.provider.IBAN,
+                props.invoiceNumber,
+                props.dueDate,
+                "700 €",
+              ],
             ],
           },
         },

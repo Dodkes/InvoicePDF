@@ -22,3 +22,14 @@ export interface Provider extends Costumer {
   registered: string;
   IBAN: string;
 }
+
+export type InvoiceDataProps = {
+  issueDate: string;
+  setIssueDate: (arg: string) => void;
+  deliveryDate: string;
+  setDeliveryDate: (arg: string) => void;
+  dueDate: string;
+  setDueDate: (arg: string) => void;
+  invoiceNumber: number;
+  setInvoiceNumber: (arg: number) => void;
+};

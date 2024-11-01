@@ -137,7 +137,14 @@ export default function AccountDashboard(props: {
         invoiceNumber={invoiceNumber}
         setInvoiceNumber={setInvoiceNumber}
       />
-      <PdfComponent provider={provider} costumer={costumer} />
+      <PdfComponent
+        provider={provider}
+        costumer={costumer}
+        issueDate={issueDate}
+        deliveryDate={deliveryDate}
+        dueDate={dueDate}
+        invoiceNumber={invoiceNumber}
+      />
     </div>
   );
 }
