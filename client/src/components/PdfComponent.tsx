@@ -4,14 +4,6 @@ import { Costumer } from "../types";
 import { Provider } from "../types";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-// const invoiceNumber = 2024001;
-
-// const invoice = {
-//   issueDate: new Date().toLocaleDateString(),
-//   deliveryDate: new Date().toLocaleDateString(),
-//   dueDate: new Date().toLocaleDateString(),
-// };
-
 const items = [
   ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"],
   ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"],
@@ -19,7 +11,14 @@ const items = [
   ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"],
 ];
 
-export default function PdfComponent(props: {
+export default function PdfComponent({
+  provider,
+  costumer,
+  invoiceNumber,
+  issueDate,
+  deliveryDate,
+  dueDate,
+}: {
   provider: Provider;
   costumer: Costumer;
   invoiceNumber: number;
@@ -31,7 +30,7 @@ export default function PdfComponent(props: {
     const docDefinition = {
       content: [
         {
-          text: `Faktúra ${props.invoiceNumber}`,
+          text: `Faktúra ${invoiceNumber}`,
           style: "h1",
         },
         {
@@ -50,30 +49,30 @@ export default function PdfComponent(props: {
         {
           columns: [
             {
-              text: `${props.provider.name}
-                            ${props.provider.street}
-                            ${props.provider.ZIP} ${props.provider.city}
-                            ${props.provider.country}
+              text: `${provider.name}
+                            ${provider.street}
+                            ${provider.ZIP} ${provider.city}
+                            ${provider.country}
                             
-                            IČO: ${props.provider.ICO}
-                            DIČ: ${props.provider.DIC}
-                            ${props.provider.registered}`,
+                            IČO: ${provider.ICO}
+                            DIČ: ${provider.DIC}
+                            ${provider.registered}`,
             },
             {
-              text: `${props.costumer.name}
-                            ${props.costumer.street}
-                            ${props.costumer.ZIP} ${props.costumer.city}
-                            ${props.costumer.country}
+              text: `${costumer.name}
+                            ${costumer.street}
+                            ${costumer.ZIP} ${costumer.city}
+                            ${costumer.country}
 
-                            IČO: ${props.costumer.ICO}
-                            DIČ: ${props.costumer.DIC}`,
+                            IČO: ${costumer.ICO}
+                            DIČ: ${costumer.DIC}`,
             },
           ],
         },
         {
-          text: `Dátum vystavenia: ${props.issueDate}
-                    Dátum dodania: ${props.deliveryDate}
-                    Dátum splatnosti ${props.dueDate}
+          text: `Dátum vystavenia: ${issueDate}
+                    Dátum dodania: ${deliveryDate}
+                    Dátum splatnosti ${dueDate}
                     `,
           style: "move",
         },
@@ -112,12 +111,7 @@ export default function PdfComponent(props: {
                 "Dátum splatnosti",
                 "Suma na úhradu",
               ],
-              [
-                props.provider.IBAN,
-                props.invoiceNumber,
-                props.dueDate,
-                "700 €",
-              ],
+              [provider.IBAN, invoiceNumber, dueDate, "700 €"],
             ],
           },
         },
