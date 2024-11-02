@@ -7,14 +7,16 @@ body {
 }
 
 .account-data-container,
-.invoice-data-container {
+.invoice-data-container,
+.items-container {
   display: flex;
   justify-content: flex-start;
   text-align: left;
 }
 
 .account-data-container > div,
-.invoice-data-container > div {
+.invoice-data-container > div,
+.items-container > div {
   margin: 2px;
 }
 

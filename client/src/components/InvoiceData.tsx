@@ -51,6 +51,40 @@ export default function InvoiceData({
           />
         </div>
       </div>
+      <h3>Items</h3>
+      <div className="items-container">
+        <div>
+          <label htmlFor="">Item name</label>
+          <br />
+          <input type="text" />
+        </div>
+        <div>
+          <label htmlFor="">Count</label>
+          <br />
+          <input type="number" />
+        </div>
+        <div>
+          <label htmlFor="">Unit</label>
+          <br />
+          <select name="unit" id="unit">
+            <option value="pcs">pcs.</option>
+            <option value="kg">h.</option>
+            <option value="l">m.</option>
+            <option value="m²">m²</option>
+            <option value="l">kg.</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="">Unit price</label>
+          <br />
+          <input type="number" />
+        </div>
+        <div>
+          <label htmlFor="">Total</label>
+          <br />
+          <input type="number" />
+        </div>
+      </div>
     </>
   );
 }
