@@ -33,3 +33,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.item-table,
+.item-table th,
+.item-table td {
+  padding: 10px;
+  border-collapse: collapse;
+  border: 1px solid black;
+}

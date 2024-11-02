@@ -22,18 +22,39 @@ export default function InvoiceData({
   function Items() {
     const createItem = () => {
       const item = [
-        itemNameRef.current?.value,
-        countRef.current?.value,
-        unitRef.current?.value,
-        `${unitPriceRef.current?.value} €`,
-        `${totalPriceRef.current?.value} €`,
+        itemNameRef.current?.value || "",
+        countRef.current?.value || "",
+        unitRef.current?.value || "",
+        `${unitPriceRef.current?.value || "0"} €`,
+        `${totalPriceRef.current?.value || "0"} €`,
       ];
-      setInvoiceItems([item]);
+      setInvoiceItems([...invoiceItems, item]);
     };
 
     return (
       <>
         <h3>Items</h3>
+        <table className="item-table">
+          <tbody>
+            <tr>
+              <th>Item name</th>
+              <th>Count</th>
+              <th>Unit</th>
+              <th>Unit price €</th>
+              <th>Total price €</th>
+            </tr>
+            {invoiceItems.map((item) => (
+              <tr>
+                {item.map((cell) => (
+                  <td>{cell}</td>
+                ))}
+                <td>
+                  <button>remove</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         <div className="items-container">
           <div>
             <label htmlFor="">Item name</label>
