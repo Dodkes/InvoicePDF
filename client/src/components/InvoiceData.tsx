@@ -1,4 +1,5 @@
 import { InvoiceDataProps } from "../types";
+import { useRef } from "react";
 
 export default function InvoiceData({
   issueDate,
@@ -9,7 +10,68 @@ export default function InvoiceData({
   setDueDate,
   invoiceNumber,
   setInvoiceNumber,
+  invoiceItems,
+  setInvoiceItems,
 }: InvoiceDataProps) {
+  const itemNameRef = useRef<HTMLInputElement>(null);
+  const countRef = useRef<HTMLInputElement>(null);
+  const unitRef = useRef<HTMLSelectElement>(null);
+  const unitPriceRef = useRef<HTMLInputElement>(null);
+  const totalPriceRef = useRef<HTMLInputElement>(null);
+
+  function Items() {
+    const createItem = () => {
+      const item = [
+        itemNameRef.current?.value,
+        countRef.current?.value,
+        unitRef.current?.value,
+        `${unitPriceRef.current?.value} €`,
+        `${totalPriceRef.current?.value} €`,
+      ];
+      setInvoiceItems([item]);
+    };
+
+    return (
+      <>
+        <h3>Items</h3>
+        <div className="items-container">
+          <div>
+            <label htmlFor="">Item name</label>
+            <br />
+            <input type="text" ref={itemNameRef} />
+          </div>
+          <div>
+            <label htmlFor="">Count</label>
+            <br />
+            <input type="number" ref={countRef} />
+          </div>
+          <div>
+            <label htmlFor="">Unit</label>
+            <br />
+            <select name="unit" id="unit" ref={unitRef}>
+              <option value="pcs">pcs</option>
+              <option value="h">h</option>
+              <option value="m">m</option>
+              <option value="m²">m²</option>
+              <option value="kg">kg</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="">Unit price €</label>
+            <br />
+            <input type="number" ref={unitPriceRef} />
+          </div>
+          <div>
+            <label htmlFor="">Total price €</label>
+            <br />
+            <input type="number" ref={totalPriceRef} />
+          </div>
+          <button onClick={createItem}>Add</button>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <h3>Invoice</h3>
@@ -51,40 +113,7 @@ export default function InvoiceData({
           />
         </div>
       </div>
-      <h3>Items</h3>
-      <div className="items-container">
-        <div>
-          <label htmlFor="">Item name</label>
-          <br />
-          <input type="text" />
-        </div>
-        <div>
-          <label htmlFor="">Count</label>
-          <br />
-          <input type="number" />
-        </div>
-        <div>
-          <label htmlFor="">Unit</label>
-          <br />
-          <select name="unit" id="unit">
-            <option value="pcs">pcs.</option>
-            <option value="kg">h.</option>
-            <option value="l">m.</option>
-            <option value="m²">m²</option>
-            <option value="l">kg.</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="">Unit price</label>
-          <br />
-          <input type="number" />
-        </div>
-        <div>
-          <label htmlFor="">Total</label>
-          <br />
-          <input type="number" />
-        </div>
-      </div>
+      <Items />
     </>
   );
 }

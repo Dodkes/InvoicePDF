@@ -27,6 +27,7 @@ export default function AccountDashboard(props: {
   const [issueDate, setIssueDate] = useState<string>(formatedDate);
   const [deliveryDate, setDeliveryDate] = useState<string>(formatedDate);
   const [dueDate, setDueDate] = useState<string>(formatedDate);
+  const [invoiceItems, setInvoiceItems] = useState<string[][]>([]);
 
   async function postData(values: Provider) {
     setProvider(values); //send to PDF component for rendering
@@ -136,6 +137,8 @@ export default function AccountDashboard(props: {
         setDueDate={setDueDate}
         invoiceNumber={invoiceNumber}
         setInvoiceNumber={setInvoiceNumber}
+        invoiceItems={invoiceItems}
+        setInvoiceItems={setInvoiceItems}
       />
       <PdfComponent
         provider={provider}
@@ -144,6 +147,7 @@ export default function AccountDashboard(props: {
         deliveryDate={deliveryDate}
         dueDate={dueDate}
         invoiceNumber={invoiceNumber}
+        invoiceItems={invoiceItems}
       />
     </div>
   );

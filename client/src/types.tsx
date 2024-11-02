@@ -32,4 +32,6 @@ export type InvoiceDataProps = {
   setDueDate: (arg: string) => void;
   invoiceNumber: number;
   setInvoiceNumber: (arg: number) => void;
+  invoiceItems: string[][];
+  setInvoiceItems: (arg: any) => void;
 };

@@ -4,13 +4,6 @@ import { Costumer } from "../types";
 import { Provider } from "../types";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const items = [
-  ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"],
-  ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"],
-  ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"],
-  ["Value 1", "Value 2", "Value 3", "Value 4", "Value 5"],
-];
-
 export default function PdfComponent({
   provider,
   costumer,
@@ -18,6 +11,7 @@ export default function PdfComponent({
   issueDate,
   deliveryDate,
   dueDate,
+  invoiceItems,
 }: {
   provider: Provider;
   costumer: Costumer;
@@ -25,6 +19,7 @@ export default function PdfComponent({
   issueDate: string;
   deliveryDate: string;
   dueDate: string;
+  invoiceItems: string[][];
 }) {
   const generatePDF = () => {
     const docDefinition = {
@@ -90,7 +85,7 @@ export default function PdfComponent({
                 "Jednotková cena",
                 "Celkom",
               ],
-              ...items,
+              ...invoiceItems,
             ],
           },
         },
