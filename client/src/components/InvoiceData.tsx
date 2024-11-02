@@ -25,8 +25,8 @@ export default function InvoiceData({
         itemNameRef.current?.value || "",
         countRef.current?.value || "",
         unitRef.current?.value || "",
-        `${unitPriceRef.current?.value || "0"} €`,
-        `${totalPriceRef.current?.value || "0"} €`,
+        `${unitPriceRef.current?.value || "0"}`,
+        `${totalPriceRef.current?.value || "0"}`,
       ];
       setInvoiceItems([...invoiceItems, item]);
     };

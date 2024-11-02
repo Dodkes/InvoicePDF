@@ -21,6 +21,12 @@ export default function PdfComponent({
   dueDate: string;
   invoiceItems: string[][];
 }) {
+  let count = 0;
+  if (invoiceItems.length !== 0) {
+    invoiceItems.forEach((item) => {
+      count += Number(item[item.length - 1]);
+    });
+  }
   const generatePDF = () => {
     const docDefinition = {
       content: [
@@ -82,15 +88,15 @@ export default function PdfComponent({
                 "Názov položky",
                 "Počet",
                 "Jednotka",
-                "Jednotková cena",
-                "Celkom",
+                "Jednotková cena €",
+                "Celkom €",
               ],
               ...invoiceItems,
             ],
           },
         },
         {
-          text: `Celková suma: ${500 + 200} €`,
+          text: `Celková suma: ${count} €`,
           style: "price",
         },
         {
@@ -106,7 +112,7 @@ export default function PdfComponent({
                 "Dátum splatnosti",
                 "Suma na úhradu",
               ],
-              [provider.IBAN, invoiceNumber, dueDate, "700 €"],
+              [provider.IBAN, invoiceNumber, dueDate, `${count} €`],
             ],
           },
         },
