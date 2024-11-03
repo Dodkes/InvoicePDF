@@ -31,6 +31,12 @@ export default function InvoiceData({
       setInvoiceItems([...invoiceItems, item]);
     };
 
+    const calculateTotalPrice = () => {
+      const unitPrice = Number(unitPriceRef.current?.value);
+      const count = Number(countRef.current?.value);
+      totalPriceRef.current!.value = (unitPrice * count).toFixed(2);
+    };
+
     return (
       <>
         <h3>Items</h3>
@@ -38,7 +44,7 @@ export default function InvoiceData({
           <tbody>
             <tr>
               <th>Item name</th>
-              <th>Count</th>
+              <th>Quantity</th>
               <th>Unit</th>
               <th>Unit price €</th>
               <th>Total price €</th>
@@ -62,9 +68,13 @@ export default function InvoiceData({
             <input type="text" ref={itemNameRef} />
           </div>
           <div>
-            <label htmlFor="">Count</label>
+            <label htmlFor="">Quantity</label>
             <br />
-            <input type="number" ref={countRef} />
+            <input
+              type="number"
+              ref={countRef}
+              onChange={calculateTotalPrice}
+            />
           </div>
           <div>
             <label htmlFor="">Unit</label>
@@ -80,7 +90,11 @@ export default function InvoiceData({
           <div>
             <label htmlFor="">Unit price €</label>
             <br />
-            <input type="number" ref={unitPriceRef} />
+            <input
+              type="number"
+              onChange={calculateTotalPrice}
+              ref={unitPriceRef}
+            />
           </div>
           <div>
             <label htmlFor="">Total price €</label>
