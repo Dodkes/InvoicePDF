@@ -31,18 +31,18 @@ export default function PdfComponent({
     const docDefinition = {
       content: [
         {
-          text: `Faktúra ${invoiceNumber}`,
+          text: `Invoice ${invoiceNumber}`,
           style: "h1",
         },
         {
           alignment: "justify",
           columns: [
             {
-              text: "DODÁVATEĽ:",
+              text: "PROVIDER:",
               style: "h2",
             },
             {
-              text: "ODBERATEĽ:",
+              text: "CUSTOMER:",
               style: "h2",
             },
           ],
@@ -55,8 +55,8 @@ export default function PdfComponent({
                             ${provider.ZIP} ${provider.city}
                             ${provider.country}
                             
-                            IČO: ${provider.ICO}
-                            DIČ: ${provider.DIC}
+                            Organisation ID: ${provider.ICO}
+                            Tax ID: ${provider.DIC}
                             ${provider.registered}`,
             },
             {
@@ -65,15 +65,15 @@ export default function PdfComponent({
                             ${costumer.ZIP} ${costumer.city}
                             ${costumer.country}
 
-                            IČO: ${costumer.ICO}
-                            DIČ: ${costumer.DIC}`,
+                            Organisation ID: ${costumer.ICO}
+                            Tax ID: ${costumer.DIC}`,
             },
           ],
         },
         {
-          text: `Dátum vystavenia: ${issueDate}
-                    Dátum dodania: ${deliveryDate}
-                    Dátum splatnosti ${dueDate}
+          text: `Date of issue: ${issueDate}
+                    Delivery date: ${deliveryDate}
+                    Due date ${dueDate}
                     `,
           style: "move",
         },
@@ -85,18 +85,18 @@ export default function PdfComponent({
             widths: ["*", "auto", 100, "*", "*"],
             body: [
               [
-                "Názov položky",
-                "Počet",
-                "Jednotka",
-                "Jednotková cena €",
-                "Celkom €",
+                "Item name",
+                "Quantity",
+                "Unit",
+                "Unit price €",
+                "Total price €",
               ],
               ...invoiceItems,
             ],
           },
         },
         {
-          text: `Celková suma: ${count} €`,
+          text: `Total price: ${count} €`,
           style: "price",
         },
         {
@@ -106,12 +106,7 @@ export default function PdfComponent({
             widths: ["auto", "auto", "auto", "auto"],
 
             body: [
-              [
-                "IBAN",
-                "Variabilný symbol",
-                "Dátum splatnosti",
-                "Suma na úhradu",
-              ],
+              ["IBAN", "Variable symbol", "Due date", "Price to pay"],
               [provider.IBAN, invoiceNumber, dueDate, `${count} €`],
             ],
           },
