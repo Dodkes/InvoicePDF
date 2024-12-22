@@ -12,21 +12,17 @@ export default function AccountDashboard(props: {
   setIsLoggedIn: (arg: boolean) => void;
 }) {
   const date = new Date();
-  const initialDate = {
-    year: date.getFullYear(),
-    month: String(date.getMonth() + 1).padStart(2, "0"),
-    day: String(date.getDate()).padStart(2, "0"),
-  };
-  const formatedDate = `${initialDate.year}-${initialDate.month}-${initialDate.day}`;
+  const isoDate = date.toISOString().substring(0, 10);
+
   const [invoiceNumber, setInvoiceNumber] = useState<number>(
     new Date().getFullYear() * 1000 + 1
   );
 
   const [provider, setProvider] = useState<Provider>(props.providerData);
   const [costumer, setCostumer] = useState<Costumer>(props.costumerData);
-  const [issueDate, setIssueDate] = useState<string>(formatedDate);
-  const [deliveryDate, setDeliveryDate] = useState<string>(formatedDate);
-  const [dueDate, setDueDate] = useState<string>(formatedDate);
+  const [issueDate, setIssueDate] = useState<string>(isoDate);
+  const [deliveryDate, setDeliveryDate] = useState<string>(isoDate);
+  const [dueDate, setDueDate] = useState<string>(isoDate);
   const [invoiceItems, setInvoiceItems] = useState<string[][]>([]);
 
   async function postData(values: Provider) {
