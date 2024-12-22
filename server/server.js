@@ -75,7 +75,7 @@ app.post("/login", (req, res) => {
       };
       res.send(response);
     } else {
-      res.sendStatus(401);
+      res.sendStatus(409);
     }
   });
 });
