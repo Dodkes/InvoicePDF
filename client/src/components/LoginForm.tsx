@@ -37,7 +37,7 @@ export default function LoginForm(props: {
         props.setProviderData(data.providerData);
         props.setCostumerData(data.costumerData);
       }
-    } else if (response.status === 401) {
+    } else if (response.status === 409) {
       props.setAutenthicationFailed(true);
     }
   }
